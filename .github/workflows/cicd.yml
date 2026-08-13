@@ -1,4 +1,4 @@
-name: Portfolio CI pipeline
+name: Portfolio CICD pipeline
 
 on: push
 
