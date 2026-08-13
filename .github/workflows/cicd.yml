@@ -32,6 +32,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Test connectivity
+        run: |
+            nc -zv -w 5 ${{ secrets.HOST }} 22 || true
+            ping -c 3 ${{ secrets.HOST }} || true
       - name: SSH to Linux and RUN container
         uses: appleboy/ssh-action@v1
         with:
@@ -39,6 +43,7 @@ jobs:
           username: "${{secrets.SSH_USERNAME}}"
           key: "${{ secrets.SSH_PRIVATE_KEY}}"
           port: 22
+          timeout: 120
           script: |
             docker rm -f my-portfolio-app || echo "Container not found, skipping removal"
             docker run -d --name my-portfolio-app -p 8080:80 ${{ secrets.DOCKER_USERNAME }}/my-portfolio-app
