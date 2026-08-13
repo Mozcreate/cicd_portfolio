@@ -35,7 +35,7 @@ jobs:
       - name: SSH to Linux and RUN container
         uses: appleboy/ssh-action@v1.2.5
         with:
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.HOSTS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
