@@ -33,7 +33,7 @@ jobs:
     needs: build
     steps:
       - name: SSH to Linux and RUN container
-        uses: appleboy/ssh-action@v1.2.5
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOSTS }}
           username: ${{ secrets.SSH_USERNAME }}
