@@ -35,9 +35,9 @@ jobs:
       - name: SSH to Linux and RUN container
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_PASSWORD }}
+          host: "${{secrets.HOST}}"
+          username: "${{secrets.SERVER_USER}}"
+          key: "${{ secrets.SERVER_PASSWORD }}"
           port: 22
           script: |
             docker rm -f my-portfolio-app || echo "Container not found, skipping removal"
